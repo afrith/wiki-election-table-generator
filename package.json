@@ -1,0 +1,33 @@
+{
+  "name": "koa-ejs-template",
+  "version": "1.0.0",
+  "description": "Template project with Koa, EJS, and Bootstrap",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "source environment && yarn nodemon -e js,ejs --exec babel-node src/index.js",
+    "build": "yarn babel src/ -d dist/ --copy-files --ignore 'src/static/*.js'",
+    "clean": "yarn rimraf dist/",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Frith <adrian@adrianfrith.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-ejs": "^4.1.2",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.11",
+    "winston": "^2.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "nodemon": "^1.17.4",
+    "rimraf": "^2.6.2"
+  }
+}
