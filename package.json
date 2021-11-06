@@ -1,7 +1,7 @@
 {
-  "name": "koa-ejs-template",
+  "name": "wiki-result-table",
   "version": "1.0.0",
-  "description": "Template project with Koa, EJS, and Bootstrap",
+  "description": "Generates SA election result tables for Wikipedia",
   "main": "dist/index.js",
   "scripts": {
     "dev": "source environment && yarn nodemon -e js,ejs --exec babel-node src/index.js",
@@ -10,24 +10,24 @@
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Adrian Frith <adrian@adrianfrith.com>",
+  "author": "Adrian Frith <adrian@frith.dev>",
   "license": "MIT",
   "dependencies": {
-    "koa": "^2.5.1",
-    "koa-ejs": "^4.1.2",
-    "koa-logger": "^3.2.0",
-    "koa-router": "^7.4.0",
+    "koa": "^2.13.4",
+    "koa-ejs": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
-    "lodash": "^4.17.11",
-    "winston": "^2.4.2"
+    "lodash": "^4.17.21",
+    "winston": "^2.4.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "nodemon": "^1.17.4",
-    "rimraf": "^2.6.2"
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "nodemon": "^2.0.14",
+    "rimraf": "^3.0.2"
   }
 }
