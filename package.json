@@ -28,6 +28,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "nodemon": "^2.0.14",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "standard": "^16.0.4"
   }
 }
