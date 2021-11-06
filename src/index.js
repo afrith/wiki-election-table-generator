@@ -1,13 +1,13 @@
 import Koa from 'koa'
-import Router from 'koa-router'
 import winston from 'winston'
 import koaLogger from 'koa-logger'
 import path from 'path'
 import render from 'koa-ejs'
 import serve from 'koa-static'
 
+import router from './routes'
+
 const app = new Koa()
-const router = new Router()
 
 if (process.env.NODE_ENV === 'production') {
   winston.level = 'info'
@@ -21,10 +21,6 @@ render(app, {
   layout: false,
   viewExt: 'ejs',
   writeResp: false
-})
-
-router.get('/', async ctx => {
-  ctx.body = await ctx.render('index')
 })
 
 app.use(router.routes()).use(router.allowedMethods())
