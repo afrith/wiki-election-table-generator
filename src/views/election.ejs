@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Election Result Table Generator for <%= election.code.toUpperCase() %></title>
+    <%- include('partials/head'); %>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= election.code.toUpperCase() %></li>
+        </ol>
+      </nav>
+      <h1>Election Result Table Generator for <%= election.code.toUpperCase() %></h1>
+
+      <p>Choose a municipality.</p>
+
+      <%
+        for (const prov in provinces) {
+          const munis = provinces[prov]
+      %>
+          <h2><%= prov %></h2>
+          <ul>
+          <% for (const muni of munis) { %>
+            <li><a href="/<%= election.code %>/<%= muni.muni_code %>"><%= muni.muni_name %> (<%= muni.muni_code %>)</a></li>
+          <% } %>
+          </ul>
+      <% } %>
+    </div>
+  </body>
+</html>

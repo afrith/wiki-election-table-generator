@@ -19,13 +19,12 @@ app.use(koaLogger(str => winston.info(str)))
 render(app, {
   root: path.join(__dirname, 'views'),
   layout: false,
-  viewExt: 'ejs',
-  writeResp: false
+  viewExt: 'ejs'
 })
 
-app.use(router.routes()).use(router.allowedMethods())
-
 app.use(serve(path.join(__dirname, 'static')))
+
+app.use(router.routes()).use(router.allowedMethods())
 
 const port = process.env.PORT || 3000
 app.listen(port, function (err) {
