@@ -27,10 +27,10 @@
 ! Ward !! List !! Total !! % !! Ward !! List !! Total<% for (const party of partyVotes) { %>
 |-
 | {{Full party name with color |<%= party.wikilink %>}}
-| <%= formatNumber(party.ward_votes) %> || <%= formatNumber(party.pr_votes) %> || <%= formatNumber(party.total_votes) %> || <%= formatPercent(party.perc) %> || <%= formatNumber(party.ward_seats) %> || <%= formatNumber(party.pr_seats) %> || <%= formatNumber(party.total_seats) %><% } %>
+| <%= formatNumber(party.ward_votes) %> || <%= formatNumber(party.pr_votes) %> || <%= formatNumber(party.total_votes) %> || <%= formatPercent(party.perc) %>% || <%= formatNumber(party.ward_seats) %> || <%= formatNumber(party.pr_seats) %> || <%= formatNumber(party.total_seats) %><% } %>
 |-
 | ||style="text-align:left"| <%= formatNumber(others.count) %> other parties
-| <%= formatNumber(others.ward_votes) %> || <%= formatNumber(others.pr_votes) %> || <%= formatNumber(others.total_votes) %> || <%= formatPercent(others.perc) %> || 0 || 0 || 0
+| <%= formatNumber(others.ward_votes) %> || <%= formatNumber(others.pr_votes) %> || <%= formatNumber(others.total_votes) %> || <%= formatPercent(others.perc) %>% || 0 || 0 || 0
 |-
 |colspan="2" style="text-align:left"| '''Total'''
 | '''<%= formatNumber(ballotTotals.ward_valid) %>''' || '''<%= formatNumber(ballotTotals.pr_valid) %>''' || '''<%= formatNumber(ballotTotals.total_valid) %>''' ||  || '''<%= formatNumber(ballotTotals.ward_seats) %>''' || '''<%= formatNumber(ballotTotals.pr_seats) %>''' || '''<%= formatNumber(ballotTotals.total_seats) %>'''
@@ -38,10 +38,10 @@
 |colspan="9"|
 |-
 |colspan="2" style="text-align:left"| Valid votes
-| <%= formatNumber(ballotTotals.ward_valid) %> || <%= formatNumber(ballotTotals.pr_valid) %> || <%= formatNumber(ballotTotals.total_valid) %> || <%= formatPercent(ballotTotals.total_valid * 100 / ballotTotals.total_total) %>
+| <%= formatNumber(ballotTotals.ward_valid) %> || <%= formatNumber(ballotTotals.pr_valid) %> || <%= formatNumber(ballotTotals.total_valid) %> || <%= formatPercent(ballotTotals.total_valid * 100 / ballotTotals.total_total) %>%
 |-
 |colspan="2" style="text-align:left"| [[Spoilt vote]]s
-| <%= formatNumber(ballotTotals.ward_spoilt) %> || <%= formatNumber(ballotTotals.pr_spoilt) %> || <%= formatNumber(ballotTotals.total_spoilt) %> || <%= formatPercent(ballotTotals.total_spoilt * 100 / ballotTotals.total_total) %>
+| <%= formatNumber(ballotTotals.ward_spoilt) %> || <%= formatNumber(ballotTotals.pr_spoilt) %> || <%= formatNumber(ballotTotals.total_spoilt) %> || <%= formatPercent(ballotTotals.total_spoilt * 100 / ballotTotals.total_total) %>%
 |-
 |colspan="2" style="text-align:left"| '''Total votes cast'''
 | '''<%= formatNumber(ballotTotals.ward_total) %>''' || '''<%= formatNumber(ballotTotals.pr_total) %>''' || '''<%= formatNumber(ballotTotals.total_total) %>''' ||
@@ -55,7 +55,7 @@
 | <%= formatNumber(turnout.regpop) %>
 |-
 |colspan="2" style="text-align:left"| Turnout percentage
-| <%= formatPercent(turnout.turnout_perc) %>
+| <%= formatPercent(turnout.turnout_perc) %>%
 |}</pre>
     </div>
     <script type="text/javascript" src="/clickcopy.js"></script>
