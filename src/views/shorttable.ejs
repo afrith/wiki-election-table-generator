@@ -11,14 +11,12 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item"><a href="/<%= election.code %>"><%= election.code.toUpperCase() %></a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= muniName %></li>
+          <li class="breadcrumb-item"><a href="/<%= election.code %>/<%= muniCode %>"><%= muniName %></a></li>
+          <li class="breadcrumb-item active" aria-current="page">Shortened table</li>
         </ol>
       </nav>
       <h1>Election Result Table for <%= election.code.toUpperCase() %> &mdash; <%= muniName %></h1>
       <p>Copy the following code into your Wikipedia article.</p>
-      <% if (showShortLink) { %>
-        <p><a href="/<%= election.code %>/<%= muniCode %>/short">Click here for a shortened version of the table, which reduces all parties who did not win a seat to a single "Other parties" line.</a></p>
-      <% } %>
       <button id="copybutton" type="button" class="btn btn-primary mb-2" onclick="copyTable()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="manual" title="Copied!">Copy to clipboard</button>
       <pre id="wikitable" class="border rounded p-3 bg-light">
 {| class=wikitable style="text-align:right"
@@ -30,6 +28,9 @@
 |-
 | {{Full party name with color |<%= party.wikilink %>}}
 | <%= formatNumber(party.ward_votes) %> || <%= formatNumber(party.pr_votes) %> || <%= formatNumber(party.total_votes) %> || <%= formatPercent(party.perc) %> || <%= formatNumber(party.ward_seats) %> || <%= formatNumber(party.pr_seats) %> || <%= formatNumber(party.total_seats) %><% } %>
+|-
+| ||style="text-align:left"| <%= formatNumber(others.count) %> other parties
+| <%= formatNumber(others.ward_votes) %> || <%= formatNumber(others.pr_votes) %> || <%= formatNumber(others.total_votes) %> || <%= formatPercent(others.perc) %> || 0 || 0 || 0
 |-
 |colspan="2" style="text-align:left"| '''Total'''
 | '''<%= formatNumber(ballotTotals.ward_valid) %>''' || '''<%= formatNumber(ballotTotals.pr_valid) %>''' || '''<%= formatNumber(ballotTotals.total_valid) %>''' ||  || '''<%= formatNumber(ballotTotals.ward_seats) %>''' || '''<%= formatNumber(ballotTotals.pr_seats) %>''' || '''<%= formatNumber(ballotTotals.total_seats) %>'''
