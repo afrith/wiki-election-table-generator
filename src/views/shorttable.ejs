@@ -18,14 +18,7 @@
       <h1>Election Result Table for <%= election.code.toUpperCase() %> &mdash; <%= muniName %></h1>
       <p>Copy the following code into your Wikipedia article.</p>
       <button id="copybutton" type="button" class="btn btn-primary mb-2" onclick="copyTable()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="manual" title="Copied!">Copy to clipboard</button>
-      <pre id="wikitable" class="border rounded p-3 bg-light">
-{{Election results
-|firstround=Ward |secondround=List<% let i = 0; for (const party of partyVotes) { i++; %>
-|party<%= i %>=<%= formatPartyLink(party.wikilink) %> |votes<%= i %>=<%= party.ward_votes %> |votes<%= i %>_2=<%= party.pr_votes %> |seats<%= i %>=<%= party.ward_seats %> |seats<%= i %>_2=<%= party.pr_seats %> |totseats<%= i %>=<%= party.total_seats %><% } %>
-<% i++ %>|party<%= i %>=<%= others.count %> other parties |votes<%= i %>=<%= others.ward_votes %> |votes<%= i %>_2=<%= others.pr_votes %> |seats<%= i %>=0 |seats<%= i %>_2=0 |totseats<%= i %>=0
-|invalid=<%= ballotTotals.ward_spoilt %> |invalid2=<%= ballotTotals.pr_spoilt %>
-|electorate=<%= turnout.regpop %> |electorate2=<%= turnout.regpop %>
-}}</pre>
+      <%- include(ballotTotals.ward_seats > 0 ? 'partials/table' : 'partials/table-noward') %>
     </div>
     <script type="text/javascript" src="/clickcopy.js"></script>
   </body>

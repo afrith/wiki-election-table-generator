@@ -53,7 +53,7 @@ router.get('/:election/:muni_code', async ctx => {
 
   const showShortLink = partyVotes.filter(row => row.total_seats === 0 && row.wikilink !== 'Independent candidates').length > 1
 
-  await ctx.render('table', { election, muniCode, muniName, showShortLink, partyVotes, ballotTotals, turnout, formatPartyLink })
+  await ctx.render('table', { election, muniCode, muniName, showShortLink, partyVotes, others: null, ballotTotals, turnout, formatPartyLink })
 })
 
 router.get('/:election/:muni_code/short', async ctx => {

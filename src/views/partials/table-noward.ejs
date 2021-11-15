@@ -1,0 +1,7 @@
+<pre id="wikitable" class="border rounded p-3 bg-light">
+{{Election results<% let i = 0; for (const party of partyVotes) { i++; %>
+|party<%= i %>=<%= formatPartyLink(party.wikilink) %> |votes<%= i %>=<%= party.pr_votes %> |seats<%= i %>=<%= party.pr_seats %><% }; if (others) { i++; %>
+|party<%= i %>=<%= others.count %> other parties |votes<%= i %>=<%= others.pr_votes %> |seats<%= i %>=0<% } %>
+|invalid=<%= ballotTotals.pr_spoilt %>
+|electorate=<%= turnout.regpop %>
+}}</pre>

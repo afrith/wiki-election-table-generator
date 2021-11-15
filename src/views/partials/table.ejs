@@ -1,0 +1,8 @@
+<pre id="wikitable" class="border rounded p-3 bg-light">
+{{Election results
+|firstround=Ward |secondround=List<% let i = 0; for (const party of partyVotes) { i++; %>
+|party<%= i %>=<%= formatPartyLink(party.wikilink) %> |votes<%= i %>=<%= party.ward_votes %> |votes<%= i %>_2=<%= party.pr_votes %> |seats<%= i %>=<%= party.ward_seats %> |seats<%= i %>_2=<%= party.pr_seats %> |totseats<%= i %>=<%= party.total_seats %><% }; if (others) { i++; %>
+|party<%= i %>=<%= others.count %> other parties |votes<%= i %>=<%= others.ward_votes %> |votes<%= i %>_2=<%= others.pr_votes %> |seats<%= i %>=0 |seats<%= i %>_2=0 |totseats<%= i %>=0<% } %>
+|invalid=<%= ballotTotals.ward_spoilt %> |invalid2=<%= ballotTotals.pr_spoilt %>
+|electorate=<%= turnout.regpop %> |electorate2=<%= turnout.regpop %>
+}}</pre>
