@@ -8,9 +8,14 @@ router.get('/', async ctx => {
   await ctx.render('index')
 })
 
-const formatDate = date => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(date)
-const formatNumber = number => number === null ? '–' : new Intl.NumberFormat('en-GB').format(number)
-const formatPercent = percent => new Intl.NumberFormat('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(percent)
+const formatPartyLink = wikilink => {
+  const match = wikilink.match(/^(.*) \(.*\)$/)
+  if (match) {
+    return `[[${wikilink}|${match[1]}]]`
+  } else {
+    return `[[${wikilink}]]`
+  }
+}
 
 const elections = {
   lge2000: { date: new Date('2000-12-05') },
@@ -48,7 +53,7 @@ router.get('/:election/:muni_code', async ctx => {
 
   const showShortLink = partyVotes.filter(row => row.total_seats === 0 && row.wikilink !== 'Independent candidates').length > 1
 
-  await ctx.render('table', { election, muniCode, muniName, showShortLink, partyVotes, ballotTotals, turnout, formatDate, formatNumber, formatPercent })
+  await ctx.render('table', { election, muniCode, muniName, showShortLink, partyVotes, ballotTotals, turnout, formatPartyLink })
 })
 
 router.get('/:election/:muni_code/short', async ctx => {
@@ -78,7 +83,7 @@ router.get('/:election/:muni_code/short', async ctx => {
     count: previous.count + 1
   }), { ward_votes: 0, pr_votes: 0, total_votes: 0, perc: 0, count: 0 })
 
-  await ctx.render('shorttable', { election, muniCode, muniName, partyVotes: visiblePartyVotes, others, ballotTotals, turnout, formatDate, formatNumber, formatPercent })
+  await ctx.render('shorttable', { election, muniCode, muniName, partyVotes: visiblePartyVotes, others, ballotTotals, turnout, formatPartyLink })
 })
 
 export default router

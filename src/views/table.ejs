@@ -21,41 +21,12 @@
       <% } %>
       <button id="copybutton" type="button" class="btn btn-primary mb-2" onclick="copyTable()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="manual" title="Copied!">Copy to clipboard</button>
       <pre id="wikitable" class="border rounded p-3 bg-light">
-{| class=wikitable style="text-align:right"
-!colspan="9" align="center"| <%= muniName %> local election, <%= formatDate(election.date) %>
-|-
-!rowspan="2" colspan="2"| Party !!colspan="4" align="center"| Votes !!colspan="3" align="center"| Seats
-|-
-! Ward !! List !! Total !! % !! Ward !! List !! Total<% for (const party of partyVotes) { %>
-|-
-| {{Full party name with color |<%= party.wikilink %>}}
-| <%= formatNumber(party.ward_votes) %> || <%= formatNumber(party.pr_votes) %> || <%= formatNumber(party.total_votes) %> || <%= formatPercent(party.perc) %>% || <%= formatNumber(party.ward_seats) %> || <%= formatNumber(party.pr_seats) %> || <%= formatNumber(party.total_seats) %><% } %>
-|-
-|colspan="2" style="text-align:left"| '''Total'''
-| '''<%= formatNumber(ballotTotals.ward_valid) %>''' || '''<%= formatNumber(ballotTotals.pr_valid) %>''' || '''<%= formatNumber(ballotTotals.total_valid) %>''' ||  || '''<%= formatNumber(ballotTotals.ward_seats) %>''' || '''<%= formatNumber(ballotTotals.pr_seats) %>''' || '''<%= formatNumber(ballotTotals.total_seats) %>'''
-|-
-|colspan="9"|
-|-
-|colspan="2" style="text-align:left"| Valid votes
-| <%= formatNumber(ballotTotals.ward_valid) %> || <%= formatNumber(ballotTotals.pr_valid) %> || <%= formatNumber(ballotTotals.total_valid) %> || <%= formatPercent(ballotTotals.total_valid * 100 / ballotTotals.total_total) %>%
-|-
-|colspan="2" style="text-align:left"| [[Spoilt vote]]s
-| <%= formatNumber(ballotTotals.ward_spoilt) %> || <%= formatNumber(ballotTotals.pr_spoilt) %> || <%= formatNumber(ballotTotals.total_spoilt) %> || <%= formatPercent(ballotTotals.total_spoilt * 100 / ballotTotals.total_total) %>%
-|-
-|colspan="2" style="text-align:left"| '''Total votes cast'''
-| '''<%= formatNumber(ballotTotals.ward_total) %>''' || '''<%= formatNumber(ballotTotals.pr_total) %>''' || '''<%= formatNumber(ballotTotals.total_total) %>''' ||
-|-
-|colspan="6"|
-|-
-|colspan="2" style="text-align:left"| Voter turnout
-| <%= formatNumber(turnout.turnout) %>
-|-
-|colspan="2" style="text-align:left"| Registered voters
-| <%= formatNumber(turnout.regpop) %>
-|-
-|colspan="2" style="text-align:left"| Turnout percentage
-| <%= formatPercent(turnout.turnout_perc) %>%
-|}</pre>
+{{Election results
+|firstround=Ward |secondround=List<% let i = 0; for (const party of partyVotes) { i++; %>
+|party<%= i %>=<%= formatPartyLink(party.wikilink) %> |votes<%= i %>=<%= party.ward_votes %> |votes<%= i %>_2=<%= party.pr_votes %> |seats<%= i %>=<%= party.ward_seats %> |seats<%= i %>_2=<%= party.pr_seats %> |totseats<%= i %>=<%= party.total_seats %><% } %>
+|invalid=<%= ballotTotals.ward_spoilt %> |invalid2=<%= ballotTotals.pr_spoilt %>
+|electorate=<%= turnout.regpop %> |electorate2=<%= turnout.regpop %>
+}}</pre>
     </div>
     <script type="text/javascript" src="/clickcopy.js"></script>
   </body>
