@@ -6,17 +6,28 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container py-3">
       <h1>Election Result Table Generator</h1>
 
-      <p>Choose an election.</p>
-      <ul>
-        <li><a href='/lge2000'>LGE 2000</a></li>
-        <li><a href='/lge2006'>LGE 2006</a></li>
-        <li><a href='/lge2011'>LGE 2011</a></li>
-        <li><a href='/lge2016'>LGE 2016</a></li>
-        <li><a href='/lge2021'>LGE 2021</a></li>
-      </ul>
+      <p>
+        This website provides tables of results of South African municipal elections in a
+        format that can be inserted into Wikipedia articles, using the template
+        <span class="font-monospace">{{<a href="https://en.wikipedia.org/wiki/Template:Election_results">Election results</a>}}</span>.
+        It is based on official election result data
+        <a href="https://results.elections.org.za/home/Downloads/ME-Results/">downloaded from the Electoral Commission</a>.
+      </p>
+
+      <div>Choose an election:
+        <ul>
+          <li><a href='/lge2000'>LGE 2000</a></li>
+          <li><a href='/lge2006'>LGE 2006</a></li>
+          <li><a href='/lge2011'>LGE 2011</a></li>
+          <li><a href='/lge2016'>LGE 2016</a></li>
+          <li><a href='/lge2021'>LGE 2021</a></li>
+        </ul>
+      </div>
+
+      <%- include('partials/foot'); %>
     </div>
   </body>
 </html>

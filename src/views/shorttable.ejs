@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container py-3">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -19,6 +19,8 @@
       <p>Copy the following code into your Wikipedia article.</p>
       <button id="copybutton" type="button" class="btn btn-primary mb-2" onclick="copyTable()" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="manual" title="Copied!">Copy to clipboard</button>
       <%- include(ballotTotals.ward_seats > 0 ? 'partials/table' : 'partials/table-noward') %>
+
+      <%- include('partials/foot'); %>
     </div>
     <script type="text/javascript" src="/clickcopy.js"></script>
   </body>
