@@ -74,7 +74,6 @@ router.get('/:election/:muni_code/short', async ctx => {
   const visiblePartyVotes = partyVotes.filter(row => row.total_seats > 0 || row.wikilink === 'Independent candidates')
   const otherPartyVotes = partyVotes.filter(row => row.total_seats === 0 && row.wikilink !== 'Independent candidates')
 
-  console.log(otherPartyVotes)
   const others = otherPartyVotes.reduce((previous, current) => ({
     ward_votes: previous.ward_votes + (current.ward_votes || 0),
     pr_votes: previous.pr_votes + (current.pr_votes || 0),
