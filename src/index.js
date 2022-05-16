@@ -16,6 +16,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use(koaLogger(str => winston.info(str)))
 
+app.use(async (ctx, next) => {
+  ctx.set('Cache-Control', 'public, max-age=604800')
+  await next()
+})
+
 render(app, {
   root: path.join(__dirname, 'views'),
   layout: false,
