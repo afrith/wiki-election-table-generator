@@ -22,7 +22,8 @@ const elections = {
   lge2006: { date: new Date('2006-03-01') },
   lge2011: { date: new Date('2011-05-18') },
   lge2016: { date: new Date('2016-08-03') },
-  lge2021: { date: new Date('2021-11-01') }
+  lge2021: { date: new Date('2021-11-01') },
+  lge2026: { date: new Date('2026-11-04') },
 }
 
 router.get('/:election', async ctx => {
@@ -52,7 +53,7 @@ router.get('/:election/:muni_code', async ctx => {
   ])
 
   const showShortLink = partyVotes.filter(row => row.total_seats === 0 && row.wikilink !== 'Independent candidates').length > 1
-
+  
   await ctx.render('table', { election, muniCode, muniName, showShortLink, partyVotes, others: null, ballotTotals, turnout, formatPartyLink })
 })
 
